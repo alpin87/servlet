@@ -15,11 +15,11 @@ import java.util.List;
 @WebServlet(name = "MemberListServlet", urlPatterns = "/servlet/members")
 public class MemberListServlet extends HttpServlet {
 
-    private MemberRepositoty memberRepositoty = MemberRepositoty.getInstance();
+    private MemberRepositoty memberRepository = MemberRepositoty.getInstance();
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Member> members = memberRepositoty.findAll();
+        List<Member> members = memberRepository.findAll();
 
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");

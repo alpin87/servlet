@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 
 public class MemberSaveServlet extends HttpServlet {
 
-private MemberRepositoty memberRepositoty = MemberRepositoty.getInstance();
+private MemberRepositoty memberRepository = MemberRepositoty.getInstance();
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +24,7 @@ private MemberRepositoty memberRepositoty = MemberRepositoty.getInstance();
         int age = Integer.parseInt(request.getParameter("age"));
 
         Member member = new Member(username, age);
-        memberRepositoty.save(member);
+        memberRepository.save(member);
 
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
