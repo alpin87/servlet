@@ -1,8 +1,5 @@
-package hello.servlet.web.servlet;
+package hello.servlet.web.servletmvc;
 
-
-import hello.servlet.domain.member.Member;
-import hello.servlet.domain.member.MemberRepositoty;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,22 +7,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 import java.io.IOException;
-import java.util.List;
+import java.sql.ResultSet;
 
-@WebServlet(name ="MvcMemberListServlet", urlPatterns = "/servlet-mvc/members")
-public class MvcMemberListServlet extends HttpServlet {
-
-private MemberRepositoty memberRepositoty = MemberRepositoty.getInstance();
-
+@WebServlet(name = "mvcMemberFormServlet", urlPatterns = "/servlet-mvc/members/new-form")
+public class MvcMemberFormServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Member> members = memberRepositoty.findAll();
-
-        request.setAttribute("members", members);
-
-        String viewPath = "/WEB-INF/views/members.jsp";
+        String viewPath = "/WEB-INF/views/new-form.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         dispatcher.forward(request, response);
     }
